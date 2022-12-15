@@ -1,0 +1,17 @@
+{
+    "name": "adm/electro-maroc",
+    "autoload": {
+        "psr-4": {
+            "Adm\\ElectroMaroc\\": "src/",
+            "Router\\": "routes/",
+            "App\\":"app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "A.Jelouani",
+            "email": "jelouaniabdelghani@gmail.com"
+        }
+    ],
+    "require": {}
+}
