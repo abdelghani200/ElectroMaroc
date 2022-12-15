@@ -4,7 +4,7 @@
         "psr-4": {
             "Adm\\ElectroMaroc\\": "src/",
             "Router\\": "routes/",
-            "App\\":"app/"
+            "App\\": "app/"
         }
     },
     "authors": [
