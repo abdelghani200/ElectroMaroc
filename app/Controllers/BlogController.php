@@ -2,21 +2,31 @@
 
 namespace App\Controllers;
 
-use Database\DBConnection;
+use App\Models\Produit;
+
 
 class BlogController extends Controller{
 
+
+    public function welcome()
+    {
+        return $this->view('blog.welcome');
+    }
+
     public function index()
     {
-        return $this->view('blog.index');
+        $prd = new Produit($this->getDB());
+        $produit = $prd->all(); 
+        
+        return $this->view('blog.index',compact('produit'));
     }
 
     public function show($id)
     {
-        $db = new DBConnection('ElectroMaroc', '127.0.0.1', 'root', '');
-        $req = $db->getPDO()->query('select * from produit');
-        $produit = $req->fetchAll();
-        var_dump($produit);
-        return $this->view('blog.show', compact('id'));
+
+        $prd = new Produit($this->getDB());
+        $prd = $prd->findById($id); 
+
+        return $this->view('blog.show', compact('prd'));
     }
 }
