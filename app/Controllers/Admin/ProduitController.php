@@ -14,6 +14,18 @@ class ProduitController extends Controller{
         return $this->view('admin.produit.index',compact('produit'));
     }
 
+    public function create()
+    {
+        $prd = (new Produit($this->getDB()))->all();
+        return $this->view('admin.produit.formProduit',compact('prd'));
+    }
+
+    public function createProduit()
+    {
+        // $prd = new Produit($this->getDB());
+        // return $this->view('admin.produit.create',compact('prd'));
+    }
+
     public function edit($id)
     {
         $prd = (new Produit($this->getDB()))->findById($id);

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5" id="login">
 
     <h1 class="text-center">Se connecter</h1>
 
@@ -7,11 +7,11 @@
             <label for="username">Nom d'utilisateur</label>
             <input type="text" class="form-control" name="username" id="username">
         </div>
-        <div class="form-group">
+        <div class="form-group mt-5">
             <label for="password">Mot de passe</label>
             <input type="password" class="form-control" name="password" id="password">
         </div>
-        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <button type="submit" class="btn btn-primary mt-5">Se connecter</button>
     </form>
     
 </div>

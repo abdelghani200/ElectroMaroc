@@ -1,5 +1,7 @@
 <h1>gestion des produits</h1>
 
+<a href="/admin/produit/create" class="btn btn-success my-3">Créer un nouvel produit</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,9 +19,9 @@
                 <td><?= $prd->getCreatedAt() ?></td>
                 <td><?= $prd->getExcerpt() ?></td>
                 <td>
-                    <a href="/admin/produits/edit/<?= $prd->id ?>" class="btn btn-warning">Modifier</a>
+                    <a href="/admin/produits/edit/<?= $prd->id ?>" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
                     <form action="/admin/produits/delete/<?= $prd->id ?>" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>
             </tr>

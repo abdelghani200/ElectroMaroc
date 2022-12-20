@@ -22,7 +22,7 @@ class Produit extends Model{
     public function getButton()
     {
        return <<<HTML
-        <a href="/posts/$this->id" class="btn btn-primary">Lire plus</a>
+        <a href="/produits/$this->id" class="btn btn-primary">Lire plus</a>
 HTML;        
     }
 }
