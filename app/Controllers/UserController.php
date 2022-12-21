@@ -17,5 +17,10 @@ class UserController extends Controller{
         $user = (new User($this->getDB()))->getByUsername($_POST['username']);
         var_dump($user);
     }
+
+    public function register()
+    {
+        return $this->view('auth.register');
+    }
     
 }

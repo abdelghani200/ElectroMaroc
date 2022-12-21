@@ -1,8 +1,8 @@
 <h1>gestion des produits</h1>
 
-<a href="/admin/produit/create" class="btn btn-success my-3">Créer un nouvel produit</a>
+<a href="/admin/produits/create" class="btn btn-success my-3">Créer un nouvel produit</a>
 
-<table class="table">
+<table class="table table-striped table-hover border">
     <thead>
         <tr>
             <th scope="col">#</th>

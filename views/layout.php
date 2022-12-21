@@ -12,7 +12,8 @@
 </head>
 <body>
     <?php  require_once VIEWS ."/inc/sidebar.php" ?>
-     <div class="container">
+    <!-- <h1 class="text-center">Les Produits</h1> -->
+     <div class="container"  id="list_produits">
         <?= $content ?>
      </div>
 

@@ -1,43 +1,48 @@
-<?php 
+<?php
 
 namespace  App\Models;
 
 use PDO;
 use Database\DBConnection;
 
-abstract class Model{
+abstract class Model
+{
 
-    protected $db;
-    protected $table;
+  protected $db;
+  protected $table;
 
-    public function __construct(DBConnection $db)
-    {
-        $this->db = $db;
-    }
+  public function __construct(DBConnection $db)
+  {
+    $this->db = $db;
+  }
 
-   public function all()
-   {
-     //    $statement = $this->db->getPDO()->query("SELECT * FROM {$this->table}");
-     //    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
-     //    return $statement->fetchAll();
-     return  $this->query("SELECT * FROM {$this->table}");
-   } 
+  public function all()
+  {
+    //    $statement = $this->db->getPDO()->query("SELECT * FROM {$this->table}");
+    //    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+    //    return $statement->fetchAll();
+    // $limit = 2;
+    // $page_number = 1;
+    // $offset = ($page_number - 1) * $limit;
+    // ORDER BY id desc limit $limit offset $offset
+    return  $this->query("SELECT * FROM {$this->table} ");
+  }
 
-   public function findById($id)
-   {
-     //    $statement = $this->db->getPDO()->prepare("SELECT * FROM {$this->table} WHERE id = ?");
-     //    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
-     //    $statement->execute([$id]);
-     //    return $statement->fetch();
-     return  $this->query("SELECT * FROM {$this->table} WHERE id = ?",[$id],true);
-   }
+  public function findById($id)
+  {
+    //    $statement = $this->db->getPDO()->prepare("SELECT * FROM {$this->table} WHERE id = ?");
+    //    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+    //    $statement->execute([$id]);
+    //    return $statement->fetch();
+    return  $this->query("SELECT * FROM {$this->table} WHERE id = ?", [$id], true);
+  }
 
-   public function update(int $id, array $data)
-   {
+  public function update(int $id, array $data)
+  {
     $splRaquestPart = "";
     $i = 1;
 
-    foreach($data as $key => $value){
+    foreach ($data as $key => $value) {
       $comma = $i === count($data) ? " " : ", ";
       $splRaquestPart .= "{$key} = :{$key}{$comma}";
       $i++;
@@ -45,39 +50,38 @@ abstract class Model{
 
     $data['id'] = $id;
 
-    return $this->query("UPDATE {$this->table} SET {$splRaquestPart} WHERE id = :id",$data);
+    return $this->query("UPDATE {$this->table} SET {$splRaquestPart} WHERE id = :id", $data);
 
     // $sql = "UPDATE {$this->table} SET categorie = :categorie, description = :description WHERE id = :id ";
-   }
+  }
 
-   public function destroy($id)
-   {
-     return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id]);
-   }
-
-
-   public function query($sql,array $param = null, $single = null)
-   {
-     $method = is_null($param) ? 'query' : 'prepare';
-
-     if(strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') ===0 || strpos($sql, 'CREATED'))
-     {
-        $statement = $this->db->getPDO()->$method($sql);
-        $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this),[$this->db]);
-        return $statement->execute($param);
-     } 
+  public function destroy($id)
+  {
+    return $this->query("DELETE FROM {$this->table} WHERE id = ?", [$id]);
+  }
 
 
-     $fetch = is_null($single) ? 'fetchAll' : 'fetch';
+  public function query($sql, array $param = null, $single = null)
+  {
+    $method = is_null($param) ? 'query' : 'prepare';
 
-     $statement = $this->db->getPDO()->$method($sql);
-     $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this),[$this->db]);
+    if (strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'CREATED')) {
+      $statement = $this->db->getPDO()->$method($sql);
+      $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+      return $statement->execute($param);
+    }
 
-     if($method === 'query'){
-          return $statement->$fetch();
-     } else { 
-          $statement->execute($param);
-          return $statement->$fetch();
-     }
-   }
+
+    $fetch = is_null($single) ? 'fetchAll' : 'fetch';
+
+    $statement = $this->db->getPDO()->$method($sql);
+    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
+
+    if ($method === 'query') {
+      return $statement->$fetch();
+    } else {
+      $statement->execute($param);
+      return $statement->$fetch();
+    }
+  }
 }

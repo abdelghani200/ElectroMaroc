@@ -30,6 +30,9 @@ $router->post('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitControll
 $router->get('/login','App\Controllers\UserController@login');
 $router->post('/login','App\Controllers\UserController@edit');
 
+$router->get('/register','App\Controllers\UserController@register');
+// $router->post('/register','App\Controllers\UserController@register');
+
 try{
 
     $router->run();

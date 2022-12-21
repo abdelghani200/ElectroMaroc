@@ -1,6 +1,3 @@
-<!-- <?php var_dump($params['prd']); ?> -->
-
-
 
 
 <a href="/produits" class="btn btn-danger mt-5">Back</a>

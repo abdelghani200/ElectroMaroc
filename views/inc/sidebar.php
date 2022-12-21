@@ -33,14 +33,14 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <div class="login-container ms-1">
-                    <form action="/login">
-                    <button type="submit" class="btn btn-success">Login</button>
-                    </form>
+                <div class="dropdown">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-right-to-bracket"></i> Connection
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="/login">Login</a></li>
+                        <li><a class="dropdown-item" href="/register">Inscription</a></li>
+                    </ul>
                 </div>
 
             </div>
