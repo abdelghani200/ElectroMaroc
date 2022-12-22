@@ -35,11 +35,14 @@
                 </ul>
                 <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-right-to-bracket"></i> Connection
+                        <i class="fa-solid fa-right-to-bracket"></i> Connection
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="/login">Login</a></li>
                         <li><a class="dropdown-item" href="/register">Inscription</a></li>
+                        <?php if (isset($_SESSION['auth'])) : ?>
+                            <li><a class="dropdown-item" href="/logout">Se déconnecter</a></li>
+                        <?php endif   ?>
                     </ul>
                 </div>
 

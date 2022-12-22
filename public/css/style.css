@@ -181,3 +181,8 @@ span {
 }
 
 /* fin style page register */
+
+#page_creation{
+  width: 70%;
+  /* background: red; */
+}

@@ -28,13 +28,13 @@ $router->get('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitControlle
 $router->post('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitController@update');
 
 $router->get('/login','App\Controllers\UserController@login');
-$router->post('/login','App\Controllers\UserController@edit');
+$router->post('/login','App\Controllers\UserController@loginPost');
+$router->get('/logout','App\Controllers\UserController@logout');
 
 $router->get('/register','App\Controllers\UserController@register');
 // $router->post('/register','App\Controllers\UserController@register');
 
 try{
-
     $router->run();
 } catch(NotFoundException $e){
     return $e->error404();

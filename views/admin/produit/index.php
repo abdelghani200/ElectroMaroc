@@ -1,5 +1,9 @@
 <h1>gestion des produits</h1>
 
+<?php if(isset($_GET['success'])): ?>
+   <div class="alert alert-success">Vous etes connecté !!</div>
+<?php endif ?>
+
 <a href="/admin/produits/create" class="btn btn-success my-3">Créer un nouvel produit</a>
 
 <table class="table table-striped table-hover border">

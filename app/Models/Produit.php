@@ -4,7 +4,8 @@ namespace App\Models;
 
 use DateTime;
 
-class Produit extends Model{
+class Produit extends Model
+{
 
     protected $table = 'produit';
 
@@ -16,13 +17,28 @@ class Produit extends Model{
 
     public function getExcerpt()
     {
-        return substr($this->description, 0, 10) .'....';
+        return substr($this->description, 0, 10) . '....';
     }
 
     public function getButton()
     {
-       return <<<HTML
+        return <<<HTML
         <a href="/produits/$this->id" class="btn btn-primary">Lire plus</a>
-HTML;        
+HTML;
     }
+
+    // public function create(array $data, $relations = null)
+    // {
+    //     parent::create($data);
+
+    //     // $id = $this->db->getPDO()->lastInsertId();
+
+    //     // return true;
+
+    //     // foreach ($data as $key) {
+    //     //     $statement = $this->db->getPDO()->prepare("INSERT INTO produit (tilte,categorie,prix_final,description) VALUES(?,?)");
+    //     //     $statement->execute($key);
+    //     // }
+    //     // return true;
+    // }
 }
