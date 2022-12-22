@@ -1,3 +1,23 @@
+<?php if (isset($_SESSION['errors'])) :   ?>
+
+    <?php foreach ($_SESSION['errors'] as $errorsArray) : ?>
+
+        <?php foreach ($errorsArray as $errors) :    ?>
+
+            <div class="alert alert-danger">
+                <?php foreach ($errors as $error) :  ?>
+                    <h5 class="text-center"><?= $error ?></h5>
+                <?php endforeach  ?>
+            </div>
+
+        <?php endforeach ?>
+
+    <?php endforeach ?>
+
+<?php endif  ?>
+
+<?php session_destroy();   ?>
+
 <div class="container mt-5" id="login">
 
     <h1 class="text-center">Se connecter</h1>
@@ -13,5 +33,5 @@
         </div>
         <button type="submit" class="btn btn-primary mt-5">Se connecter</button>
     </form>
-    
+
 </div>
