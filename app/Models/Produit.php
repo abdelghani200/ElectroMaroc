@@ -27,18 +27,12 @@ class Produit extends Model
 HTML;
     }
 
-    // public function create(array $data, $relations = null)
-    // {
-    //     parent::create($data);
+    public function create(array $data, $relations = null)
+    {
+        parent::create($data);
+    }
+      
 
-    //     // $id = $this->db->getPDO()->lastInsertId();
 
-    //     // return true;
-
-    //     // foreach ($data as $key) {
-    //     //     $statement = $this->db->getPDO()->prepare("INSERT INTO produit (tilte,categorie,prix_final,description) VALUES(?,?)");
-    //     //     $statement->execute($key);
-    //     // }
-    //     // return true;
-    // }
+   
 }

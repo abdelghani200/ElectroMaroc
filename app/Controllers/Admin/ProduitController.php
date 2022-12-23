@@ -2,8 +2,9 @@
 
 namespace App\Controllers\Admin;
 
-use App\Controllers\Controller;
+use App\Models\Pager;
 use App\Models\Produit;
+use App\Controllers\Controller;
 
 class ProduitController extends Controller{
 
@@ -12,7 +13,8 @@ class ProduitController extends Controller{
         $this->isAdmin();
 
         $produit = (new Produit($this->getDB()))->all();
-
+        $pager = new Pager($this->getDB());
+       
         return $this->view('admin.produit.index',compact('produit'));
     }
 
@@ -27,21 +29,22 @@ class ProduitController extends Controller{
 
     public function createProduit()
     {
-
+        
         $this->isAdmin();
-        // $prd = new Produit($this->getDB());
-        // $result = $prd->create($_POST,$prd);
-        // var_dump($result);
-        // if($result){
-        //     return header('Location: /admin/produits');
-        // }
+       
         $prd = new Produit($this->getDB());
+
         $result = $prd->create($_POST);
 
         if($result)
         {
             return header('Location: /admin/produits');
         }
+
+        // echo "<pre>";
+        // var_dump($_POST['image_produit']);
+        // echo "<pre>";
+        // exit;
         
     }
 

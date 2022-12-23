@@ -1,7 +1,7 @@
 <h1 class="text-center">page de création</h1>
 
 <div class="container" id="page_creation">
-    <form action="/admin/produits/create" method="POST">
+    <form action="http://electromaroc.test/admin/produits" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Title Produit</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Title produit">
@@ -15,13 +15,13 @@
             <input type="text" class="form-control" name="prix_final" id="prix_final" placeholder="Price produit">
         </div>
         <div class="mb-3">
-            <label for="discription" class="form-label">Discription</label>
-            <textarea class="form-control" name="discription" id="discription" rows="3" placeholder="Entrer une description"></textarea>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Entrer une description"></textarea>
         </div>
-        <!-- <div class="mb-3">
-            <label for="image" class="form-label">Image</label>
-            <input type="file" class="form-control" name="image" id="image">
-        </div> -->
+        <div class="mb-3">
+            <label for="image_produit" class="form-label">Image</label>
+            <input type="file" class="form-control" name="image_produit" id="image_produit">
+        </div>
 
         <button type="submit" href="" class="btn btn-primary">Enregistrer mon article</button>
 

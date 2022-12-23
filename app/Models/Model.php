@@ -4,6 +4,7 @@ namespace  App\Models;
 
 use PDO;
 use Database\DBConnection;
+use Pager;
 
 abstract class Model
 {
@@ -21,11 +22,12 @@ abstract class Model
     //    $statement = $this->db->getPDO()->query("SELECT * FROM {$this->table}");
     //    $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
     //    return $statement->fetchAll();
-    // $limit = 2;
-    // $page_number = 1;
-    // $offset = ($page_number - 1) * $limit;
-    // ORDER BY id desc limit $limit offset $offset
-    return  $this->query("SELECT * FROM {$this->table} ");
+    $limit = 6;
+    $page_number = isset($_GET['page']) ? (int)$_GET['page']: 1;
+    $page_number = $page_number < 1 ? 1:$page_number;
+    $offset = ($page_number - 1) * $limit;
+
+    return  $this->query("SELECT * FROM {$this->table} ORDER BY id desc limit $limit offset $offset");
   }
 
   public function findById($id)
@@ -50,8 +52,7 @@ abstract class Model
       $secondParenthesis .= ":{$key}{$comma}";
       $i++;
     }
-    
-    // var_dump($data);
+
     return $this->query("INSERT INTO {$this->table} ($firstParenthesis) VALUES ($secondParenthesis)", $data);
   }
 
@@ -70,8 +71,8 @@ abstract class Model
 
     return $this->query("UPDATE {$this->table} SET {$splRaquestPart} WHERE id = :id", $data);
 
-    // $sql = "UPDATE {$this->table} SET categorie = :categorie, description = :description WHERE id = :id ";
   }
+  // $sql = "UPDATE {$this->table} SET categorie = :categorie, description = :description WHERE id = :id ";
 
   public function destroy($id)
   {

@@ -1,5 +1,5 @@
-<div class="container list_produits" >
-<!-- style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;" -->
+<div class="container mt-5 list_produits">
+    <!-- style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;" -->
     <?php foreach ($params['produit'] as $prd) : ?>
         <!-- <?php var_dump($prd);          ?> -->
         <div class="card" style="width:20rem;">
@@ -19,4 +19,15 @@
         </div>
 
     <?php endforeach ?>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
+    
 </div>

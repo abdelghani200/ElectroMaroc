@@ -32,6 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>(5)</sup></a></a>
+                    </li>
                 </ul>
                 <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
