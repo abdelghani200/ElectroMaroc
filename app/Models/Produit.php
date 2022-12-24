@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use PDO;
 use DateTime;
+use Exception;
 
 class Produit extends Model
 {
@@ -31,6 +33,9 @@ HTML;
     {
         parent::create($data);
     }
+
+   
+
       
 
 

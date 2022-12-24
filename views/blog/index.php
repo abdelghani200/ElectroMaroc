@@ -1,7 +1,19 @@
+<div class="input-group mb-3 mt-5 ms-5" style="width:25rem">
+    <label class="input-group-text" for="inputGroupSelect01">Categories</label>
+    <select class="form-select" id="inputGroupSelect01">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+</div>
+
+
 <div class="container mt-5 list_produits">
-    <!-- style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;" -->
+
+
     <?php foreach ($params['produit'] as $prd) : ?>
-        <!-- <?php var_dump($prd);          ?> -->
+
         <div class="card" style="width:20rem;">
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body">
@@ -29,5 +41,5 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </nav>
-    
+
 </div>

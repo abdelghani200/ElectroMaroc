@@ -1,7 +1,7 @@
 <h1 class="text-center">page de création</h1>
 
 <div class="container" id="page_creation">
-    <form action="http://electromaroc.test/admin/produits" method="POST">
+    <form action="/admin/produits/createProduit" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="title" class="form-label">Title Produit</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Title produit">
@@ -21,9 +21,13 @@
         <div class="mb-3">
             <label for="image_produit" class="form-label">Image</label>
             <input type="file" class="form-control" name="image_produit" id="image_produit">
+            <!-- <input type="submit" value="Create"> -->
         </div>
 
         <button type="submit" href="" class="btn btn-primary">Enregistrer mon article</button>
 
     </form>
 </div>
+
+
+

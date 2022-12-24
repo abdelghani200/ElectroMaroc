@@ -22,7 +22,7 @@ $router->get('/produits/:id','App\Controllers\BlogController@show');
 
 $router->get('/admin/produits', 'App\Controllers\Admin\ProduitController@index');
 $router->get('/admin/produits/create', 'App\Controllers\Admin\ProduitController@create');
-$router->post('/admin/produits/create', 'App\Controllers\Admin\ProduitController@createProduit');
+$router->post('/admin/produits/createProduit', 'App\Controllers\Admin\ProduitController@createProduit');
 $router->post('/admin/produits/delete/:id', 'App\Controllers\Admin\ProduitController@destroy');
 $router->get('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitController@edit');
 $router->post('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitController@update');
