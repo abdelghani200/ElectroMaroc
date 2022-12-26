@@ -1,3 +1,4 @@
+<?php use App\Controllers\CartShop\CartController; ?>
 <!doctype html>
 <html lang="en">
 
@@ -33,7 +34,15 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i><sup>(5)</sup></a></a>
+
+                        <?php   // Utilisation de la fonction pour ajouter un clic au compteur
+                        CartController::addToCartClick();
+
+                        // Utilisation de la fonction pour récupérer le nombre de clics
+                        $clicks = CartController::getAddToCartClicks();   ?>
+
+
+                        <a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>(<?= $clicks ?>)</span></a></a>
                     </li>
                 </ul>
                 <div class="dropdown">

@@ -22,47 +22,20 @@ class ProduitController extends Controller
         $this->isAdmin();
 
         $prd = (new Produit($this->getDB()))->all();
-        // var_dump($prd);
         return $this->view('admin.produit.formProduit', compact('prd'));
     }
-
-    // public function createProduit()
-    // {
-
-    //     $this->isAdmin();
-
-    //     $prd = new Produit($this->getDB());
-
-    //     $result = $prd->create($_POST);
-
-    //     if($result)
-    //     {
-    //         return header('Location: /admin/produits');
-    //     }
-
-
-    // }
 
     public function createProduit()
     {
         $this->isAdmin();
 
         $prd = new Produit($this->getDB());
-
-        // Handle the uploaded image
         $image = $_FILES['image_produit'];
-        $image_path = '';
-        if ($image['error'] === UPLOAD_ERR_OK) {
-            $image_name = time() . '_' . $image['name'];
-            $image_path = 'uploads/produits/' . $image_name;
-            move_uploaded_file($image['tmp_name'], $image_path);
-        }
 
-        // Add the image path to the data array
+        move_uploaded_file($image['tmp_name'], getcwd(). '/uploads/' . $image['name']);
         $data = $_POST;
-        $data['image_produit'] = $image_path;
-
-        // Insert the record into the database
+        $data['image_produit'] = $image['name'];
+        
         $result = $prd->create($data);
 
         if ($result) {
@@ -70,11 +43,6 @@ class ProduitController extends Controller
         }
     }
 
-
-    // echo "<pre>";
-    // var_dump($_POST['image_produit']);
-    // echo "<pre>";
-    // exit;
 
     public function edit($id)
     {
@@ -112,3 +80,10 @@ class ProduitController extends Controller
         }
     }
 }
+
+
+
+ // echo "<pre>";
+    // var_dump($_POST['image_produit']);
+    // echo "<pre>";
+    // exit;

@@ -1,7 +1,8 @@
+
 <h1>gestion des produits</h1>
 
-<?php if(isset($_GET['success'])): ?>
-   <div class="alert alert-success text-center">Vous etes connecté !!</div>
+<?php if (isset($_GET['success'])) : ?>
+    <div class="alert alert-success text-center">Vous etes connecté !!</div>
 <?php endif ?>
 
 <a href="/admin/produits/create" class="btn btn-success my-3">Créer un nouvel produit</a>
@@ -21,7 +22,7 @@
         <?php foreach ($params['produit'] as $prd) : ?>
             <tr>
                 <th scope="row"><?= $prd->id ?></th>
-                <td><?= $prd->image_produit ?></td>
+                <td> <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="width: 80px; height: 80px; border-radius: 50px;" class="card-img-top" alt=""/>'; ?></td>
                 <td><?= $prd->categorie ?></td>
                 <td><?= $prd->getCreatedAt() ?></td>
                 <td><?= $prd->getExcerpt() ?></td>

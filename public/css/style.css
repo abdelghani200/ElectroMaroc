@@ -107,7 +107,8 @@ span {
 #card-display {
 
   width: 70%;
-
+  display: flex;
+  justify-content: space-between;
 
 }
 

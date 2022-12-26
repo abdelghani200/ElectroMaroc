@@ -5,6 +5,7 @@ namespace App\Models;
 use PDO;
 use DateTime;
 use Exception;
+use SplFileInfo;
 
 class Produit extends Model
 {
@@ -14,7 +15,6 @@ class Produit extends Model
     public function getCreatedAt()
     {
         return (new DateTime($this->created_at))->format('d/m/Y à H:i');
-        // echo  $this->created_at;
     }
 
     public function getExcerpt()
@@ -31,13 +31,11 @@ HTML;
 
     public function create(array $data, $relations = null)
     {
+
+        // Create the record in the database
         parent::create($data);
     }
 
-   
+    
 
-      
-
-
-   
 }

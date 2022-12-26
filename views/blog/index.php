@@ -14,24 +14,23 @@
 
     <?php foreach ($params['produit'] as $prd) : ?>
 
-        <div class="card" style="width:20rem;">
-            <!-- <img src="..." class="card-img-top" alt="..."> -->
-            <div class="card-body">
+        
 
-                <h5 class="card-title badge bg-danger"><?= $prd->title ?></h5>
-                <p class="card-text"><?= $prd->getExcerpt() ?></p>
-                <div class="prix" style="display:flex;">
-                    <p style="padding-right: 1rem;"><?= $prd->prix_final ?>$</p>
-                    <p style="-webkit-text-decoration-line: line-through;text-decoration-line: line-through;color:crimson;">167$</p>
-                </div>
-                <small class="badge bg-success">Publié le <?= $prd->getCreatedAt() ?></small><br><br>
+        <div class="card" style="width: 20rem;">
+        <h5 class="card-title text-center" style="color: green;"><?= $prd->title ?></h5>
+        <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="class="card-img-top" />'; ?>
+            <div class="card-body">
                 <?= $prd->getButton() ?>
-                <!-- <a href="/posts/<?= $prd->id ?>" class="btn btn-primary">Lire plus</a> -->
             </div>
         </div>
 
     <?php endforeach ?>
 
+
+
+</div>
+
+<div class="col d-flex justify-content-center mt-5">
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -41,5 +40,4 @@
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
     </nav>
-
 </div>
