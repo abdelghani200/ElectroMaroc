@@ -25,9 +25,11 @@ class CartController extends Controller
 {
     // $this->isAdmin();
 
-    $cart = (new Cart($this->getDB()))->all();
+    $carts = (new Cart($this->getDB()))->all();
+
+    var_dump($carts);
     
-    return $this->view('admin.produit.cart', ['carts' => $cart]);
+    return $this->view('admin.produit.cart', compact('carts'));
 }
 
 

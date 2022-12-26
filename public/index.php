@@ -19,6 +19,9 @@ define('DB_PWD', '');
 $router = new Router($_GET['url']);
 
 $router->get('/','App\Controllers\BlogController@welcome');
+$router->get('/contact','App\Controllers\BlogController@contact');
+
+
 $router->get('/produits','App\Controllers\BlogController@index');
 $router->get('/produits/:id','App\Controllers\BlogController@show');
 

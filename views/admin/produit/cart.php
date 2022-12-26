@@ -15,7 +15,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($cart as $cart) :   ?>
+        <?php foreach ($params['carts'] as $cart) :   ?>
             <tr>
                 <th scope="row"><?= $cart->id ?></th>
                 <td><?= $cart->categorie ?></td>

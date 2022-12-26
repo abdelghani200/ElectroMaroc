@@ -13,6 +13,12 @@ class BlogController extends Controller{
         return $this->view('blog.welcome');
     }
 
+
+    public function contact()
+    {
+        return $this->view('blog.contact');
+    }
+
     public function index()
     {
         $prd = new Produit($this->getDB());

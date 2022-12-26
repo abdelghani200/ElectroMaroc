@@ -1,15 +1,3 @@
-<!-- <h1 class="text-center">Welcome</h1> -->
-
-<!-- <div class="card mt-5" style="width: 20rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-</div> -->
-
-
 <div id="carouselExampleDark" class="carousel carousel-dark slide mt-5" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
