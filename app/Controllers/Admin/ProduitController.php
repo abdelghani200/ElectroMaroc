@@ -41,6 +41,9 @@ class ProduitController extends Controller
         if ($result) {
             return header('Location: /admin/produits');
         }
+        else{
+            return header('Location: /admin/produits');
+        }
     }
 
 
@@ -76,7 +79,7 @@ class ProduitController extends Controller
         $result = $prd->destroy($id);
 
         if ($result) {
-            return header('Location: /admin/produits');
+            return header('Location: /login');
         }
     }
 }

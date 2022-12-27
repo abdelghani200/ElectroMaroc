@@ -10,29 +10,37 @@ class CartController extends Controller
 
     private static $addToCartClicks = 0;
 
-    
-
-    // public function cart()
-    // {
-    //     // $this->isAdmin();
-
-    //     $cart = (new Cart($this->getDB()))->all();
-        
-    //     return $this->view('admin.produit.cart', compact('cart'));
-    // }
-
     public function cart()
-{
-    // $this->isAdmin();
+    {
+        // $this->isAdmin();
 
-    $carts = (new Cart($this->getDB()))->all();
-
-    var_dump($carts);
-    
-    return $this->view('admin.produit.cart', compact('carts'));
-}
+        $carts = (new Cart($this->getDB()))->all();
+        // var_dump($carts);
+        return $this->view('admin.produit.cart', compact('carts'));
+    }
 
 
+    public function cartid($id)
+    {
+
+        // $this->isAdmin();
+
+        $prd = (new Cart($this->getDB()))->findById($id);
+
+        // return $this->view('admin.produit.cart', compact('prd'));
+        echo $id;
+        exit;
+    }
+
+
+    public function display($id)
+    {
+
+        $carts = new Cart($this->getDB());
+        $carts = $carts->findById($id);
+        var_dump($carts);
+        return $this->view('admin.produit.cart', compact('carts'));
+    }
 
 
     // Fonction pour ajouter un clic au compteur
@@ -46,12 +54,4 @@ class CartController extends Controller
     {
         return self::$addToCartClicks;
     }
-
-    // public function display()
-    // {
-    //     $prd = new Cart($this->getDB());
-    //     $cart = $prd->all();
-
-    //     return $this->view('admin.produit.cart', ['carts' => $cart]);
-    // }
 }

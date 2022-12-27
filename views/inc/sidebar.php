@@ -1,4 +1,6 @@
-<?php use App\Controllers\CartShop\CartController; ?>
+<?php use App\Controllers\CartShop\CartController;   ?>
+
+
 <!doctype html>
 <html lang="en">
 

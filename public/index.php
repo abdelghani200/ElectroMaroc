@@ -36,11 +36,12 @@ $router->get('/login','App\Controllers\UserController@login');
 $router->post('/login','App\Controllers\UserController@loginPost');
 $router->get('/logout','App\Controllers\UserController@logout');
 
-$router->get('/register','App\Controllers\UserController@register');
-// $router->post('/register','App\Controllers\UserController@register');
+$router->get('/register','App\Controllers\RegisterController@register');
+$router->post('/register','App\Controllers\RegisterController@registerClient');
 
 // add cart
 $router->get('/cart','App\Controllers\CartShop\CartController@cart');
+$router->post('/cart/:id', 'App\Controllers\Admin\CartController@cartid');
 $router->post('/cart','App\Controllers\CartShop\CartController@display');
 
 try{

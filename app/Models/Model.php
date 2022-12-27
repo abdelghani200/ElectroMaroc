@@ -17,13 +17,13 @@ abstract class Model
     $this->db = $db;
   }
 
+  // $limit = 6;
+  // $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  // $page_number = $page_number < 1 ? 1 : $page_number;
+  // $offset = ($page_number - 1) * $limit;
+  // ORDER BY id desc limit $limit offset $offset
   public function all()
   {
-    // $limit = 6;
-    // $page_number = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-    // $page_number = $page_number < 1 ? 1 : $page_number;
-    // $offset = ($page_number - 1) * $limit;
-    // ORDER BY id desc limit $limit offset $offset
 
     return  $this->query("SELECT * FROM {$this->table}");
   }

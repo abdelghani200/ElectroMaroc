@@ -12,3 +12,4 @@ class User extends Model{
         return $this->query("SELECT * FROM {$this->table} WHERE username = ? ", [$username], true);
     }
 }
+
