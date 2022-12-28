@@ -57,15 +57,37 @@ class ProduitController extends Controller
         return $this->view('admin.produit.edit', compact('prd'));
     }
 
+    // public function update($id)
+    // {
+
+    //     $this->isAdmin();
+
+    //     $prd = new Produit($this->getDB());
+    //     $result = $prd->update($id, $_POST);
+
+    //     if ($result) {
+    //         return header('Location: /admin/produits');
+    //     }
+    // }
+
     public function update($id)
     {
-
-        $this->isAdmin();
-
         $prd = new Produit($this->getDB());
-        $result = $prd->update($id, $_POST);
+        $image = $_FILES['image_produit'];
 
-        if ($result) {
+        if (is_uploaded_file($image['tmp_name'])) {
+            move_uploaded_file($image['tmp_name'], getcwd() . '/uploads/' . $image['name']);
+            $data['image_produit'] = $image['name'];
+            $data = array_merge($data, $_POST);
+
+            // $this->isAdmin();
+
+            $result = $prd->update($id, $data);
+
+            if ($result) {
+                return header('Location: /admin/produits');
+            }
+        } else {
             return header('Location: /admin/produits');
         }
     }

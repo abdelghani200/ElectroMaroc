@@ -14,9 +14,8 @@
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Nom</th>
             <th scope="col">Image</th>
-            <th scope="col">categorie</th>
-            <th scope="col">publié le</th>
             <th scope="col">description</th>
             <th scope="col">Action</th>
         </tr>
@@ -25,13 +24,12 @@
         <?php foreach ($params['produit'] as $prd) : ?>
             <tr>
                 <th scope="row"><?= $prd->id ?></th>
-                <td> <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="width: 80px; height: 80px; border-radius: 50px;" class="card-img-top" alt=""/>'; ?></td>
-                <td><?= $prd->categorie ?></td>
-                <td><?= $prd->getCreatedAt() ?></td>
+                <th scope="row"><?= $prd->nom ?></th>
+                <td> <?php echo '<img  src="../public/uploads/' . $prd->photo . '" style="width: 80px; height: 80px; border-radius: 50px;" class="card-img-top" alt=""/>'; ?></td>
                 <td><?= $prd->getExcerpt() ?></td>
                 <td>
-                    <a href="/admin/produits/edit/<?= $prd->id ?>" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
-                    <form action="/admin/produits/delete/<?= $prd->id ?>" method="POST" class="d-inline">
+                    <a href="/admin/categories/edit/<?= $prd->id ?>" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                    <form action="/admin/categories/delete/<?= $prd->id ?>" method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                     </form>
                 </td>

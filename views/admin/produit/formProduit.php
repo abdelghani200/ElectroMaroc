@@ -1,3 +1,5 @@
+<?php use App\Models\Categorie;   ?>
+
 <h1 class="text-center"><?= $params['prd']->title ??  'page de création' ?></h1>
 
 <div class="container" id="page_creation">
@@ -8,7 +10,19 @@
         </div>
         <div class="mb-3">
             <label for="categorie" class="form-label">Categorie Produit</label>
-            <input type="text" class="form-control" name="categorie" id="categorie" value="<?= $params['prd']->categorie ?? '' ?>" placeholder="Categorie produit">
+            <!-- <input type="text" class="form-control" name="categorie" id="categorie" value="<?= $params['prd']->categorie ?? '' ?>" placeholder="Categorie produit"> -->
+            <select name="selectClub" class="form-control">
+                <?php
+                $prd = (new Categorie($this->getDB()))->all();
+                while ($tables = mysqli_fetch_row($prd)) {
+                ?>
+                    <option value="<?php echo ($tables[0]); ?>">
+                        <?php echo ($tables[0]); ?>
+                    <?php
+                }
+                    ?>
+                    </option>
+            </select>
         </div>
         <div class="mb-3">
             <label for="prix_final" class="form-label">Prix Produit</label>

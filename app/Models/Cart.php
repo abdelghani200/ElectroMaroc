@@ -6,8 +6,8 @@ class Cart extends Model
 {
     
     protected $table = 'recommanded';
-
-
+    
+    
     public function getRows(int $id = null)
     {
         if ($id) {
@@ -18,5 +18,10 @@ class Cart extends Model
             var_dump($this->all());
         }
     }
+    
+    
+
+    
+
 
 }

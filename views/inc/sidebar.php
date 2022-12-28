@@ -36,15 +36,8 @@
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item">
-
-                        <?php   // Utilisation de la fonction pour ajouter un clic au compteur
-                        CartController::addToCartClick();
-
-                        // Utilisation de la fonction pour récupérer le nombre de clics
-                        $clicks = CartController::getAddToCartClicks();   ?>
-
-
-                        <a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i><span>(<?= $clicks ?>)</span></a></a>
+                        
+                        <a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i><span></span></a></a>
                     </li>
                 </ul>
                 <div class="dropdown">

@@ -22,6 +22,10 @@ $router->get('/','App\Controllers\BlogController@welcome');
 $router->get('/contact','App\Controllers\BlogController@contact');
 
 
+// $router->get('/dashboard','App\Controllers\DashboardController@index');
+
+
+
 $router->get('/produits','App\Controllers\BlogController@index');
 $router->get('/produits/:id','App\Controllers\BlogController@show');
 
@@ -31,6 +35,13 @@ $router->post('/admin/produits/create', 'App\Controllers\Admin\ProduitController
 $router->post('/admin/produits/delete/:id', 'App\Controllers\Admin\ProduitController@destroy');
 $router->get('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitController@edit');
 $router->post('/admin/produits/edit/:id', 'App\Controllers\Admin\ProduitController@update');
+
+$router->get('/admin/categories', 'App\Controllers\Admin\CategorieController@index');
+$router->get('/admin/categories/create', 'App\Controllers\Admin\CategorieController@create');
+$router->post('/admin/categories/create', 'App\Controllers\Admin\CategorieController@createCategorie');
+$router->post('/admin/categories/delete/:id', 'App\Controllers\Admin\CategorieController@destroy');
+$router->get('/admin/categories/edit/:id', 'App\Controllers\Admin\CategorieController@edit');
+$router->post('/admin/categories/edit/:id', 'App\Controllers\Admin\CategorieController@update');
 
 $router->get('/login','App\Controllers\UserController@login');
 $router->post('/login','App\Controllers\UserController@loginPost');
