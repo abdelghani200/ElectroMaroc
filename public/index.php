@@ -9,6 +9,7 @@ require '../vendor/autoload.php';
 // echo $_GET['url'];
 define('VIEWS',dirname(__DIR__) . DIRECTORY_SEPARATOR .'views' . DIRECTORY_SEPARATOR);
 define('SCRIPTS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
+define('JS',dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
 
 
 define('DB_NAME', 'ElectroMaroc');

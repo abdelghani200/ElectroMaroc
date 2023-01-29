@@ -1,18 +1,22 @@
-<h1>Modifier <?= $params['prd']->categorie ?> </h1>
+<h1>Modifier <?= $params['prd']->title ?> </h1>
 
 <form action="/admin/produits/edit/<?= $params['prd']->id ?>" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="Categorie">title de produit</label>
-        <input type="text" class="form-control" name="Categorie" id="Categorie" value="<?= $params['prd']->categorie ?>">
+        <label for="title">title de produit</label>
+        <input type="text" class="form-control" name="title" id="title" value="<?= $params['prd']->title ?>">
     </div>
     <div class="mb-3">
             <label for="categorie" class="form-label">Categorie Produit</label>
-            <input type="text" class="form-control" name="categorie" id="categorie" value="<?= $params['prd']->categorie ?? '' ?>" placeholder="Categorie produit">
+            <select name="categorie" class="form-control">
+                <?php foreach ($params['cats'] as $cat) : ?>
+                    <option value="<?= $cat->nom ?>"><?= $cat->nom ?></option>
+                <?php endforeach  ?>    
+            </select>
         </div>
         <div class="mb-3">
             <label for="prix_final" class="form-label">Prix Produit</label>
-            <input type="text" class="form-control" name="prix_final" id="prix_final" value="<?= $params['prd']->prix_final ?? '' ?>" placeholder="Price produit">
+            <input type="text" class="form-control" name="prix_final" id="prix_final" value="<?= $params['prd']->prix_final  ?>" placeholder="Price produit">
         </div>
     <div class="form-group">
         <label for="description">description</label>

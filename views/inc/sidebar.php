@@ -37,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                         
-                        <a class="nav-link" href="/cart"><i class="fa-solid fa-cart-shopping"></i><span></span></a></a>
+                        <a class="nav-link cart-btn" href="/cart"><i class="fa-solid fa-cart-shopping"></i><span></span></a></a>
                     </li>
                 </ul>
                 <div class="dropdown">

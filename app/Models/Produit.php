@@ -36,6 +36,33 @@ HTML;
         parent::create($data);
     }
 
+    public function getCategorie()
+    {
+        return $this->query(" SELECT c.* FROM categorie c INNER JOIN produit_categorie pc ON pt.cat_id = c.id 
+        WHERE pc.cat_id = ?", [$this->id]);
+    }
+
+
+    public function update(int $id, array $data, $relations = null)
+    {
+        parent::update($id, $data);
+
+        $stmt = $this->db->getPDO()->prepare("DELETE FROM produit_categorie WHERE cat_id = ?");
+        $result = $stmt->execute([$id]);
+
+        foreach($relations as $catId){
+           $stmt = $this->db->getPDO()->prepare("INSERT produit_categorie(pr_id, cat_id) VALUES (?, ?)");
+           $stmt->execute([$id, $catId]);
+        }
+
+
+        if($result){
+
+            return true;
+        }
+
+    }
+
     
 
 }

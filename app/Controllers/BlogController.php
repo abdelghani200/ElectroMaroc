@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Produit;
 
 
@@ -34,5 +35,10 @@ class BlogController extends Controller{
         $prd = $prd->findById($id); 
 
         return $this->view('blog.show', compact('prd'));
+    }
+
+    public function cat($id)
+    {
+        $cat = (new Categorie($this->getDB()))->findById($id);
     }
 }

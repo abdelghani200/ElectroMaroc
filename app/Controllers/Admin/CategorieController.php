@@ -22,6 +22,7 @@ class CategorieController extends Controller
         // $this->isAdmin();
 
         $prd = (new Categorie($this->getDB()))->all();
+        // var_dump($prd);
         return $this->view('admin.categorie.formCategorie', compact('prd'));
     }
 
@@ -55,7 +56,7 @@ class CategorieController extends Controller
 
         return $this->view('admin.categorie.edit', compact('prd'));
     }
-    
+
 
     public function update($id)
     {
@@ -78,11 +79,6 @@ class CategorieController extends Controller
             return header('Location: /admin/categories');
         }
     }
-
-
-
-
-
 
 
     public function destroy(int $id)

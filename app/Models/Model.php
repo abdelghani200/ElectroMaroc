@@ -55,7 +55,7 @@ abstract class Model
 
 
 
-  public function update(int $id, array $data)
+  public function update(int $id, array $data, $relations = null)
   {
     $splRaquestPart = "";
     $i = 1;
@@ -81,7 +81,7 @@ abstract class Model
   {
     $method = is_null($param) ? 'query' : 'prepare';
 
-    if (strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'CREATED')) {
+    if (strpos($sql, 'DELETE') === 0 || strpos($sql, 'UPDATE') === 0 || strpos($sql, 'INSERT')) {
       $statement = $this->db->getPDO()->$method($sql);
       $statement->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->db]);
       return $statement->execute($param);

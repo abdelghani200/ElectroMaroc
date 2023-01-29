@@ -1,12 +1,11 @@
-
 <h1>gestion des produits</h1>
 <div class="container mt-5">
-    </div>
-    
-    <?php if (isset($_GET['success'])) : ?>
-        <div class="alert alert-success text-center">Vous etes connecté !!</div>
-        <?php endif ?>
-        
+</div>
+
+<?php if (isset($_GET['success'])) : ?>
+    <div class="alert alert-success text-center">Vous etes connecté !!</div>
+<?php endif ?>
+
 <a href="/admin/produits/create" class="btn btn-success my-3">Créer un nouvel produit</a>
 <a href="/admin/categories/create" class="btn btn-success my-3">Créer un nouvel Categorie</a>
 
@@ -15,6 +14,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Image</th>
+            <th scope="col">Nom Produit</th>
+            <th scope="col">Price</th>
             <th scope="col">categorie</th>
             <th scope="col">publié le</th>
             <th scope="col">description</th>
@@ -26,6 +27,8 @@
             <tr>
                 <th scope="row"><?= $prd->id ?></th>
                 <td> <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="width: 80px; height: 80px; border-radius: 50px;" class="card-img-top" alt=""/>'; ?></td>
+                <td><?= $prd->title ?></td>
+                <td><?= $prd->prix_final ?></td>
                 <td><?= $prd->categorie ?></td>
                 <td><?= $prd->getCreatedAt() ?></td>
                 <td><?= $prd->getExcerpt() ?></td>

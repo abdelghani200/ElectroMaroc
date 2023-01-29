@@ -13,12 +13,9 @@
 
 
     <?php foreach ($params['produit'] as $prd) : ?>
-
-        
-
         <div class="card" style="width: 20rem;">
-        <h5 class="card-title text-center" style="color: green;"><?= $prd->title ?></h5>
-        <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="class="card-img-top" />'; ?>
+            <h5 class="card-title text-center" style="color: green;"><?= $prd->title ?></h5>
+            <?php echo '<img  src="../public/uploads/' . $prd->image_produit . '" style="class="card-img-top" />'; ?>
             <div class="card-body">
                 <?= $prd->getButton() ?>
             </div>

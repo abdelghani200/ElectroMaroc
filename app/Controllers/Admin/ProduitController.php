@@ -5,6 +5,7 @@ namespace App\Controllers\Admin;
 use App\Models\Pager;
 use App\Models\Produit;
 use App\Controllers\Controller;
+use App\Models\Categorie;
 
 class ProduitController extends Controller
 {
@@ -14,7 +15,8 @@ class ProduitController extends Controller
         $this->isAdmin();
 
         $produit = (new Produit($this->getDB()))->all();
-        return $this->view('admin.produit.index', compact('produit'));
+        $cats = (new Categorie($this->getDB()))->all();
+        return $this->view('admin.produit.index', compact('produit','cats'));
     }
 
     public function create()
@@ -22,7 +24,9 @@ class ProduitController extends Controller
         $this->isAdmin();
 
         $prd = (new Produit($this->getDB()))->all();
-        return $this->view('admin.produit.formProduit', compact('prd'));
+        $cats = (new Categorie($this->getDB()))->all();
+    
+        return $this->view('admin.produit.formProduit', compact('prd','cats'));
     }
 
     public function createProduit()
@@ -53,26 +57,16 @@ class ProduitController extends Controller
         $this->isAdmin();
 
         $prd = (new Produit($this->getDB()))->findById($id);
+        $cats = (new Categorie($this->getDB()))->all();
 
-        return $this->view('admin.produit.edit', compact('prd'));
+        return $this->view('admin.produit.edit', compact('prd', 'cats'));
     }
 
-    // public function update($id)
-    // {
-
-    //     $this->isAdmin();
-
-    //     $prd = new Produit($this->getDB());
-    //     $result = $prd->update($id, $_POST);
-
-    //     if ($result) {
-    //         return header('Location: /admin/produits');
-    //     }
-    // }
 
     public function update($id)
     {
         $prd = new Produit($this->getDB());
+        $cats = array_pop($_POST);
         $image = $_FILES['image_produit'];
 
         if (is_uploaded_file($image['tmp_name'])) {
@@ -82,7 +76,7 @@ class ProduitController extends Controller
 
             // $this->isAdmin();
 
-            $result = $prd->update($id, $data);
+            $result = $prd->update($id, $data, $cats);
 
             if ($result) {
                 return header('Location: /admin/produits');
@@ -95,7 +89,7 @@ class ProduitController extends Controller
     public function destroy(int $id)
     {
 
-        $this->isAdmin();
+        // $this->isAdmin();
 
         $prd = new Produit($this->getDB());
         $result = $prd->destroy($id);
