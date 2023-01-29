@@ -1,19 +1,4 @@
-#card {
-  width: 200px;
-  /* background: red; */
-}
 
-.logo {
-  width: 55px;
-}
-
-
-/* .slider-inner{
-    width: 100%;
-    height: 600px;
-} */
-
-/* footer */
 
 .footer-basic {
   padding: 40px 0;
@@ -75,75 +60,12 @@
   margin-bottom: 0;
 }
 
-
-/* end footer  */
-
-
-/* style (qui somme nous?) */
-
-#content_acceuil {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* .image{
-    width: 600px;
-} */
-
-#title {
-  letter-spacing: 1px;
-}
-
-span {
-
-  color: blue;
-}
-
-/* end style (qui somme nous?) */
+/* Credit to https://epicbootstrap.com/snippets/footer-basic */
 
 
-/* style show produit */
+/* style page register */
 
-#card-display {
-
-  width: 70%;
-  display: flex;
-  justify-content: space-between;
-  /* background: red; */
-
-}
-
-/* end style show prodtuit */
-
-
-/* login */
-
-#login {
-
-  width: 60%;
-}
-
-/* end login */
-
-/* produits */
-
-/* #products {
-  display: flex;
-  background: red;
-} */
-
-.list_produits {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-/* fin produits */
-
- /* style page register */
-
- .input-nom, .input-email,.input-password {
+.input-nom, .input-email, .input-password {
   width: 100%;
   max-width: 750px;
   border: 2px solid #72ae00;
@@ -158,7 +80,7 @@ span {
   height: 35px
 }
 
-.input-icone .input-nom, .input-email,.input-password {
+.input-icone .input-nom, .input-email, .input-password {
   padding-left: 35px;
 }
 
@@ -184,18 +106,18 @@ span {
 
 /* fin style page register */
 
-#page_creation{
-  width: 70%;
-  /* background: red; */
+
+#content_acceuil {
+  display: flex;
+  justify-content: space-between;
 }
 
 
-/* cart shoping */
-
-.qty{
-
-  border: 2px solid #72ae00;
-  border-radius: 4px;
+#title {
+  letter-spacing: 1px;
 }
 
-/* end cart shoping */
+span {
+
+  color: blue;
+}

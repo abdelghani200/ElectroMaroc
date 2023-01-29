@@ -1,6 +1,9 @@
+Options All -Indexes
+
 RewriteEngine On
 
-RewriteCond %{REQUEST_FILENAME}  !-f
+RewriteBase /ElectroMaroc
 
+RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1
 
-RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]
+# RewriteRule ^([-a-zA-Z0-9]+)$ index.php?page=$1
