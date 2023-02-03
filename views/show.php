@@ -2,7 +2,66 @@
 $data = new ProductController();
 $product = $data->getProduct();
 ?>
-<!-- 
+
+
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12 mb-2">
+          <div class="card h-100 bg-white rounded p-2">
+            <div class="card-header bg-light">
+              <h3 class="card-title text-center" style="color: green; font-size: 3rem;">
+                <?php echo $product->product_title; ?>
+              </h3>
+            </div>
+            <div class="card-img-top">
+              <img width="" src="./public/uploads/<?php echo $product->product_image; ?>" alt="" class="img-fluid rounded">
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <?php echo $product->short_desc; ?>
+              </p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <div class="price">
+                <span class="badge bg-danger p-2">
+                  <?php echo $product->product_price; ?> dh
+                </span>
+              </div>
+              <div class="old-price">
+                <span class="badge bg-dark p-2 ms-5">
+                  <strike>
+                    <?php echo $product->old_price; ?> dh
+                  </strike>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-secondary m-3 text-center">
+        Qté :
+      </h3>
+      <form method="post" action="<?php echo BASE_URL; ?>checkout">
+        <div class="form-group">
+          <input type="number" name="product_qte" id="product_qte" class="form-control" value="1">
+          <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
+          <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary mt-3" value="Ajouter au panier">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
 <style>
   .container {
     padding: 2rem 0;
@@ -17,7 +76,7 @@ $product = $data->getProduct();
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   }
 
-  .card-img-top {
+  /* .card-img-top {
     height: 250px;
     overflow: hidden;
   }
@@ -29,7 +88,7 @@ $product = $data->getProduct();
 
   .card:hover .card-img-top img {
     transform: scale(1.1);
-  }
+  } */
 
   .card-header {
     background-color: #f2f2f2;
@@ -99,59 +158,4 @@ $product = $data->getProduct();
     background-color: #27ae60;
     cursor: pointer;
   }
-</style> -->
-
-<div class="container">
-  <div class="row my-5">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-md-12 mb-2">
-          <div class="card h-100 bg-white rounded p-2">
-            <div class="card-header bg-light">
-              <h3 class="card-title text-center" style="color: green; font-size: 3rem;">
-                <?php echo $product->product_title; ?>
-              </h3>
-            </div>
-            <div class="card-img-top">
-              <img width="100%" src="./public/uploads/<?php echo $product->product_image; ?>" alt="" class="img-fluid rounded">
-            </div>
-            <div class="card-body">
-              <p class="card-text">
-                <?php echo $product->short_desc; ?>
-              </p>
-            </div>
-            <div class="card-footer d-flex justify-content-between align-items-center">
-              <div class="price">
-                <span class="badge bg-danger p-2">
-                  <?php echo $product->product_price; ?> dh
-                </span>
-              </div>
-              <div class="old-price">
-                <span class="badge bg-dark p-2 ms-5">
-                  <strike>
-                    <?php echo $product->old_price; ?> dh
-                  </strike>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <h3 class="text-secondary m-3 text-center">
-        Qté :
-      </h3>
-      <form method="post" action="<?php echo BASE_URL; ?>checkout">
-        <div class="form-group">
-          <input type="number" name="product_qte" id="product_qte" class="form-control" value="1">
-          <input type="hidden" name="product_title" value="<?php echo $product->product_title; ?>">
-          <input type="hidden" name="product_id" value="<?php echo $product->product_id; ?>">
-        </div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-primary mt-3" value="Ajouter au panier">
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+</style>
