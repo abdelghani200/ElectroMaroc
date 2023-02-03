@@ -74,6 +74,8 @@ class ProductController
             }
         }
     }
+
+    
     public function updateProduct()
     {
         if (isset($_POST["submit"])) {
