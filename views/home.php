@@ -2,7 +2,6 @@
 
 $categories = new CategorieController();
 $categories = $categories->getAllCategories();
-$pager  = new Pager();
 
 if (isset($_POST["cat_id"])) {
     $products = new ProductController();
@@ -85,7 +84,7 @@ if (isset($_POST["cat_id"])) {
 
 
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-center mt-3">
                         <?php
                          $currentPage =  ( $_SERVER['REQUEST_URI'][(strlen($_SERVER['REQUEST_URI']) - 1)]);
                          if(!is_numeric( $currentPage )) $currentPage = 1; 
