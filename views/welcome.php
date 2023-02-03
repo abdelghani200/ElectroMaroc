@@ -6,13 +6,13 @@
     </div>
     <div class="carousel-inner slider-inner">
         <div class="carousel-item active" data-bs-interval="10000">
-            <img src="<?php echo BASE_URL; ?>public/images/Apple.jpg" class="d-block w-100" alt="...">
+            <img src="<?php echo BASE_URL; ?>public/images/1.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item slider-inner" data-bs-interval="2000">
-            <img src="<?php echo BASE_URL; ?>public/images/Apple.jpg" class="d-block w-100" alt="...">
+            <img src="<?php echo BASE_URL; ?>public/images/2.jpg" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item slider-inner">
-            <img src="<?php echo BASE_URL; ?>public/images/Apple.jpg"  class="d-block w-100" alt="...">
+            <img src="<?php echo BASE_URL; ?>public/images/3.jpg"  class="d-block w-100" alt="...">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
@@ -35,7 +35,7 @@
         </p>
         <a href="" class="btn btn-primary" id="btn-lire">Lire la suite -></a>
     </div>
-    <div class="image">
-        <img src="<?php echo BASE_URL; ?>public/images/images.jpg" 
+    <div class="image ms-3">
+        <img src="<?php echo BASE_URL; ?>public/images/images.jpg">
     </div>
 </div>
