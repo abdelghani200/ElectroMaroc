@@ -8,19 +8,17 @@ $home = new HomeController();
 
 // $home->index("home");
 
-$pages =['home','welcome','cart','dashboard','updateProduct','deleteProduct','addProduct','emptyCart','show','cancelcart','register','login','checkout','logout','products','orders','addOrders','formuleAchat','contact','about','categories','updateCategorie','deleteCategorie','addCategorie'];
+$pages =['home','welcome','cart','dashboard','updateProduct','deleteProduct','addProduct','emptyCart','show','cancelcart','register','login','checkout','logout','products','orders','addOrder','formuleAchat','contact','about','categories','updateCategorie','deleteCategorie','addCategorie','deleteOrder'];
 
 
 if(isset($_GET['page'])){
     if(in_array($_GET['page'],$pages)){
         $page = $_GET['page'];
-        if($page === "dashboard" || $page === "deleteProduct" || $page === "updateProduct" || $page === "addProduct" || $page === "products" || $page === "orders" || $page === "categories" || $page === "updateCategorie" || $page === "deleteCategorie" || $page === "addCategorie"){
-            // if(isset($_SESSION['admin']) && $_SESSION['admin'] === true){
+        if($page === "dashboard" || $page === "deleteProduct" || $page === "updateProduct" || $page === "addProduct" || $page === "products" || $page === "orders" || $page === "categories" || $page === "updateCategorie" || $page === "deleteCategorie" || $page === "addCategorie" || $page === "deleteOrder"){
+            
                 $admin = new AdminController();
                 $admin->index($page);
-            // }else{
-            //     include('views/includes/404.php');
-            // }
+            
         }else{
             $home->index($page);
         }
