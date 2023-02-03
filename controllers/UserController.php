@@ -2,23 +2,69 @@
 
 class UserController
 {
-    public function auth()
-    {
-        if (isset($_POST["submit"])) {
-            $data["username"] = $_POST["username"];
-            $result = User::login($data);
-            if ($result->username === $_POST["username"] && password_verify($_POST["password"], $result->password)) {
-                $_SESSION["logged"] = true;
-                $_SESSION["username"] = $result->username;
-                $_SESSION["fullname"] = $result->fullname;
-                $_SESSION["admin"] = $result->admin;
-                Redirect::to("home");
-            } else {
-                Session::set("error", "Pseudo ou mot de passe est incorrect");
-                Redirect::to("login");
-            }
-        }
-    }
+
+    // public function auth()
+    // {
+    //     if (isset($_POST["submit"])) {
+    //         $data["username"] = $_POST["username"];
+    //         $user = User::login($data);
+    //         // var_dump($user);
+
+    //         if ($user) {
+    //             if ($user->role === "admin") {
+    //                 $user = User::login($data, "admin");
+    //             } else {
+    //                 $user = User::login($data, "user");
+    //             }
+
+    //             if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
+    //                 $_SESSION["logged"] = true;
+    //                 $_SESSION["username"] = $user->username;
+    //                 $_SESSION["fullname"] = $user->fullname;
+    //                 $_SESSION["role"] = $user->role;
+    //                 Redirect::to("home");
+    //             } else {
+    //                 Session::set("error", "username ou mot de passe est incorrect");
+    //                 Redirect::to("login");
+    //             }
+    //         } else {
+    //             Session::set("error", "Username not found");
+    //             Redirect::to("login");
+    //         }
+    //     }
+    // }
+
+
+   
+ public function auth()
+ {
+     if (isset($_POST["submit"])) {
+         $data["username"] = $_POST["username"];
+         $role = User::getRoleByUsername($data["username"]);
+
+         $user = User::login($data, $role);
+         if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
+             $_SESSION["logged"] = true;
+             if ($role === 'user') {
+                 $_SESSION["fullname"] = $user->fullname;
+                 $_SESSION["role"] ='user';
+             } elseif ($role === 'admin') {
+                 $_SESSION["admin"] = true;
+                 $_SESSION["fullname"] = $user->fullname;
+                 $_SESSION["role"] ='user';
+             }
+             Redirect::to("home");
+         } else {
+             Session::set("error", "username ou mot de passe est incorrect");
+             Redirect::to("login");
+         }
+     }
+ }
+
+
+
+
+
     public function register()
     {
         $options = [
@@ -32,8 +78,8 @@ class UserController
             "ntele" => $_POST["ntele"],
             "email" => $_POST["email"],
             "password" => $password,
+            "role" => "user", // default role is set to "user"
         );
-        
         $result = User::createUser($data);
         if ($result === "ok") {
             Session::set("success", "Compte crée");
