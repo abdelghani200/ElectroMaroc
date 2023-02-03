@@ -113,4 +113,6 @@ class Product
             echo "erreur " . $ex->getMessage();
         }
     }
+
+    
 }
