@@ -36,28 +36,6 @@
                 </tbody>
             </table>
 
-            <script>
-                function updateTotal(quantityInput) {
-                    quantityInput.oninput = function() {
-                        var quantity = quantityInput.value;
-                        var price = quantityInput.getAttribute("data-price");
-                        var total = document.getElementById("total-" + quantityInput.id.split("-")[1]);
-                        $.ajax({
-                            type: "POST",
-                            url: "Product.php",
-                            data: {
-                                function: 'updateQuantity',
-                                quantity: quantity,
-                                price: price
-                            },
-                            success: function(data) {
-                                console.log("Data updated successfully!");
-                            }
-                        });
-                        total.innerHTML = (quantity * price) + "Dh";
-                    }
-                }
-            </script>
         </div>
 
         <div class="col-4 col-md-4 float-right bg-white">
@@ -88,14 +66,43 @@
                 Vider le panier
             </button>
 
-            <form method="post" id="addorder" action="<?php echo BASE_URL; ?>addOrder">
+            <form method="post" id="addorder" action="<?php echo BASE_URL; ?>addOrder"></form>
 
-            </form>
+
+
+
 
         </div>
     </div>
-    <div class="mt-5" id="achat" style="display: flex;justify-content:center;justify-items: center;"></div>
+    <div class="mt-5" id="achat" style="display: flex;justify-content:center;justify-items: center;display:none">
+        <form  style="width: 600px;border-style: solid;padding:2rem;justify-content:center;justify-items: center;">
+            <div class="form-group mb-3">
+                <label for="card-number" class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="card-number" aria-describedby="emailHelp" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="card-holder-name" class="form-label">Cardholder name</label>
+                <input type="text" class="form-control" id="card-holder-name" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="expiry-date">Expiry date</label>
+                <input class="form-control expire" type="text" placeholder="MM / YYYY" id="expiry-date" required />
+            </div>
+            <div class="form-group mb-3">
+                <label for="security-number">Security Number</label>
+                <input class="form-control ccv" type="text" placeholder="CVC" maxlength="3" id="security-number" required />
+            </div>
+            <button class="btn btn-primary buy" type="submit" id="paypalbutton"><i class="fa fa-cc-paypal fa-brands"></i> Pay€</button>
+        </form>
 
-
+    </div>
+        <script>
+            document.querySelector("#addorder").addEventListener("click", function() {
+                var form = document.querySelector("#addorder");
+                if (form) {
+                    form.submit();
+                }
+            });
+        </script>
 
 </div>
