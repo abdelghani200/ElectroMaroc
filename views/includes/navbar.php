@@ -48,7 +48,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <?php if (isset($_SESSION["logged"]) && $_SESSION["logged"] === true) : ?>
-                            <a class="dropdown-item" href="#"><?php echo $_SESSION["fullname"]; ?></a>
+                            <?php if ($_SESSION["role"] === 'user' || $_SESSION["role"] === 'admin') : ?>
+                                <a class="dropdown-item" href="#"><?php echo $_SESSION["fullname"]; ?></a>
+                            <?php endif; ?>
                             <a class="dropdown-item" href="<?php echo BASE_URL; ?>logout">Déconnexion</a>
                             <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) : ?>
                                 <a class="dropdown-item" href="<?php echo BASE_URL; ?>dashboard">Admin</a>
@@ -56,9 +58,9 @@
                         <?php else : ?>
                             <a class="dropdown-item" href="<?php echo BASE_URL; ?>login">Login</a>
                             <a class="dropdown-item" href="<?php echo BASE_URL; ?>register">Inscription</a>
-
                         <?php endif; ?>
                     </ul>
+
                 </div>
             </div>
         </div>
