@@ -121,3 +121,8 @@ span {
 
   color: blue;
 }
+
+
+.validated {
+  background-color: lightgreen;
+}
