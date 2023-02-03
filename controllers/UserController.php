@@ -3,66 +3,30 @@
 class UserController
 {
 
-    // public function auth()
-    // {
-    //     if (isset($_POST["submit"])) {
-    //         $data["username"] = $_POST["username"];
-    //         $user = User::login($data);
-    //         // var_dump($user);
+    public function auth()
+    {
+        if (isset($_POST["submit"])) {
+            $data["username"] = $_POST["username"];
+            $role = User::getRoleByUsername($data["username"]);
 
-    //         if ($user) {
-    //             if ($user->role === "admin") {
-    //                 $user = User::login($data, "admin");
-    //             } else {
-    //                 $user = User::login($data, "user");
-    //             }
-
-    //             if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
-    //                 $_SESSION["logged"] = true;
-    //                 $_SESSION["username"] = $user->username;
-    //                 $_SESSION["fullname"] = $user->fullname;
-    //                 $_SESSION["role"] = $user->role;
-    //                 Redirect::to("home");
-    //             } else {
-    //                 Session::set("error", "username ou mot de passe est incorrect");
-    //                 Redirect::to("login");
-    //             }
-    //         } else {
-    //             Session::set("error", "Username not found");
-    //             Redirect::to("login");
-    //         }
-    //     }
-    // }
-
-
-   
- public function auth()
- {
-     if (isset($_POST["submit"])) {
-         $data["username"] = $_POST["username"];
-         $role = User::getRoleByUsername($data["username"]);
-
-         $user = User::login($data, $role);
-         if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
-             $_SESSION["logged"] = true;
-             if ($role === 'user') {
-                 $_SESSION["fullname"] = $user->fullname;
-                 $_SESSION["role"] ='user';
-             } elseif ($role === 'admin') {
-                 $_SESSION["admin"] = true;
-                 $_SESSION["fullname"] = $user->fullname;
-                 $_SESSION["role"] ='user';
-             }
-             Redirect::to("home");
-         } else {
-             Session::set("error", "username ou mot de passe est incorrect");
-             Redirect::to("login");
-         }
-     }
- }
-
-
-
+            $user = User::login($data, $role);
+            if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
+                $_SESSION["logged"] = true;
+                if ($role === 'user') {
+                    $_SESSION["fullname"] = $user->fullname;
+                    $_SESSION["role"] = 'user';
+                } elseif ($role === 'admin') {
+                    $_SESSION["admin"] = true;
+                    $_SESSION["fullname"] = $user->fullname;
+                    $_SESSION["role"] = 'user';
+                }
+                Redirect::to("home");
+            } else {
+                Session::set("error", "username ou mot de passe est incorrect");
+                Redirect::to("login");
+            }
+        }
+    }
 
 
     public function register()
