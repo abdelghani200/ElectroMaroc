@@ -1,14 +1,17 @@
 <?php
+
 ob_start();
 if (isset($_POST["product_id"])) {
     $id = $_POST["product_id"];
     $data = new ProductController();
     $product = $data->getProduct();
+    // die(var_dump($product));
     if (!isset($_SESSION["products_" . $product->product_id])) $_SESSION["products_" . $product->product_id] = array();
     if (
         isset($_SESSION["products_" . $product->product_id])
         && $_SESSION["products_" . $product->product_id]["title"] == $_POST["product_title"]
     ) {
+        // echo "hghghhg";
         Session::set("info", "Vous avez déja ajouté ce produit au panier");
         Redirect::to("cart");
     } else {
