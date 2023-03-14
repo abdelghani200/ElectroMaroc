@@ -34,3 +34,11 @@ if (isset($_POST["product_id"])) {
 } else {
     Redirect::to("cart");
 }
+
+
+
+
+
+
+
+

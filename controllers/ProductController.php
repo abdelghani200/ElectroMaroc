@@ -21,6 +21,9 @@ class ProductController
     }
 
 
+    
+    
+    
     public function getAllProducts_2()
     {
         $page =  ( $_SERVER['REQUEST_URI'][(strlen($_SERVER['REQUEST_URI']) - 1)]);
@@ -59,7 +62,6 @@ class ProductController
                 "product_title" => $_POST["product_title"],
                 "product_description" => $_POST["product_description"],
                 "product_quantity" => $_POST["product_quantity"],
-                "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto(),
                 "old_price" => $_POST["old_price"],
                 "product_price" => $_POST["product_price"],
@@ -68,9 +70,9 @@ class ProductController
             $result = Product::addProduct($data);
             if ($result === "ok") {
                 Session::set("success", "Produit ajouté");
-                Redirect::to("products");
+                Redirect::to("products");  
             } else {
-                echo $result;
+                echo $result . "hhhh";
             }
         }
     }
@@ -85,7 +87,6 @@ class ProductController
                 "product_title" => $_POST["product_title"],
                 "product_description" => $_POST["product_description"],
                 "product_quantity" => $_POST["product_quantity"],
-                "short_desc" => $_POST["short_desc"],
                 "product_image" => $this->uploadPhoto($oldImage),
                 "old_price" => $_POST["old_price"],
                 "product_price" => $_POST["product_price"],

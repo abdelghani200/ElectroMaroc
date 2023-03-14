@@ -7,6 +7,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
     if (isset($_POST["submit"])) {
         $product = new ProductController();
         $product->updateProduct();
+        header("Location: products");
     }
 } else {
     Redirect::to("home");
@@ -28,9 +29,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
                         </div>
                         <div class="form-group">
                             <textarea row="5" cols="20" autocomplete="off" class="form-control" name="product_description" placeholder="Description" id=""><?php echo $productToUpdate->product_description; ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <textarea row="5" cols="20" autocomplete="off" class="form-control" name="short_desc" placeholder="Description Courte" id=""><?php echo $productToUpdate->short_desc; ?></textarea>
                         </div>
                         <div class="form-group">
                             <select class="form-control" name="product_category_id" id="">

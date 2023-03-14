@@ -8,11 +8,15 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
     if (isset($_POST["submit"])) {
         $categorie = new CategorieController();
         $categorie->updateCategorie();
+        // header("Location: products");
     }
 } else {
     Redirect::to("home");
 }
 ?>
+
+
+
 <div class="container">
     <div class="row my-4">
         <div class="col-md-6 mx-auto">

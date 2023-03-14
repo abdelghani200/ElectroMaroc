@@ -3,8 +3,11 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
     $categories = new CategorieController();
     $categories = $categories->getAllCategories();
     if (isset($_POST["submit"])) {
+        // var_dump($_POST);
         $product = new ProductController();
         $product->newProduct();
+        header("Location: products");
+        exit();
     }
 } else {
     Redirect::to("home");
@@ -28,9 +31,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
                             <textarea row="5" cols="20" autocomplete="off" class="form-control" name="product_description" placeholder="Description" id=""></textarea>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea row="5" cols="20" autocomplete="off" class="form-control" name="short_desc" placeholder="Description Courte" id=""></textarea>
-                        </div>
-                        <div class="form-group mt-3">
                             <select class="form-control" name="product_category_id" id="">
                                 <?php foreach ($categories as $category) : ?>
                                     <option value="<?php echo $category["cat_id"] ?>">
@@ -52,7 +52,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == true) {
                             <input type="file" class="form-control" name="image">
                         </div>
                         <div class="form-group mt-3">
-                            <button name="submit" class="btn btn-primary">
+                            <button type="submit" name="submit" value="Submit" class="btn btn-primary">
                                 Enregistrer
                             </button>
                         </div>

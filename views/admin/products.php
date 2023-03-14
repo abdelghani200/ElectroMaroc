@@ -17,7 +17,7 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
             <form id="form" action="<?php echo BASE_URL ?>updateProduct" method="post">
                 <input type="hidden" name="product_id" id="product_id">
             </form>
-            <form id="delete_form" action="<?php echo BASE_URL ?>deleteProduct" method="post">
+            <form id="delete_prd" action="<?php echo BASE_URL ?>deleteProduct" method="post">
                 <input type="hidden" name="delete_product_id" id="delete_product_id">
             </form>
             <div class="card bg-light p-3 mt-3">

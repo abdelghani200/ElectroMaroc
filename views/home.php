@@ -49,7 +49,7 @@ if (isset($_POST["cat_id"])) {
                                 <div class="cord-body">
                                     <p class="card-text">
                                         <?php
-                                        echo $product['short_desc'];
+                                        echo $product['product_description'];
                                         ?>
                                     </p>
                                 </div>

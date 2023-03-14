@@ -1,4 +1,7 @@
 <?php
+
+
+
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
     $data = new OrdersController();
     $orders = $data->getAllOrders();
@@ -16,17 +19,21 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
             <form id="valider_order" action="<?php echo BASE_URL ?>validerOrder" method="post">
                 <input type="hidden" name="validateOrderId" id="validateOrderId">
             </form>
+
             <div class="card bg-light p-3">
                 <table class="table table-striped table-inverse">
                     <h3 class="font-weight-bold">Commandes</h3>
                     <thead>
                         <tr>
                             <th>Nom & Prénom</th>
-                            <th>Produit</th>
-                            <th>Quantité</th>
-                            <th>Prix</th>
+                            <th class="text-center">Email</th>
+                            <th>product</th>
+                            <th>Nb</th>
                             <th>Total</th>
-                            <th>Effectuée le</th>
+                            <th class="text-center">Effectuée le</th>
+                            <th class="text-center">Delivery le</th>
+                            <th class="text-center">Valider le</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -34,27 +41,54 @@ if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
                         <?php foreach ($orders as $order) : ?>
                             <tr data-order-id="<?php echo $order['id']; ?>">
                                 <td><?php echo $order["fullname"]; ?></td>
-                                <td><?php echo $order["product"]; ?></td>
-                                <td><?php echo $order["qte"]; ?></td>
-                                <td><?php echo $order["price"]; ?></td>
-                                <td><?php echo $order["total"]; ?></td>
-                                <td><?php echo $order["done_at"]; ?></td>
-                                <td class="text-center">
-                                    <a onclick="Valider(<?php echo $order['id']; ?>)" class="btn btn-success validate-order" title="Valider">
-                                        <i class="fa-solid fa-check"></i>
-                                    </a>
-                                    <a onclick="deleteOrder(<?php echo $order['id']; ?>)" class="btn btn-danger delete-order" title="Supprimer">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                    <a onclick="Delivery(<?php echo $order['id']; ?>)" class="btn btn-warning delete-order" title="Delivery">
-                                        <i class="fa-solid fa-truck"></i>
+                                <td><?php echo $order["email"]; ?></td>
+                                <td>
+                                    <a href="membres?id=<?php echo $order["user_id"]; ?>" class="btn btn-success" title="View">
+                                        <i class="fa-solid fa-eye"></i>
                                     </a>
                                 </td>
+                                <td class="text-center"><?php echo $order['count'] ?></td>
+                                <td><?php echo $order["total"]; ?></td>
+                                <td><?php echo $order["done_at"]; ?></td>
+                                <td><?php echo $order["send_date"]; ?></td>
+                                <td><?php echo $order["delivery_date"]; ?></td>
+                                <td class="pt-3 pb-4"><?php echo $order['status']
+                                                            ?
+                                                            '<span class="badge text-bg-success">Product Shipped</span>'
+                                                            :
+                                                            '<span class="badge text-bg-danger">Need Validation</span>'; ?>
+                                </td>
+                                <td class="text-center">
+                                    <div class="d-flex">
+                                        <a onclick="deleteOrder(<?php echo $order['id'];?>)" class="btn btn-danger delete-order" title="Supprimer" style="height: 32px;width: 38px;">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+
+                                        <form method="POST" class="ms-1" action="send">
+                                            <input type="hidden" name="id" value="<?php echo $order['id']; ?>">
+                                            <button class="btn btn-sm btn-success">
+                                                <i class="fa-solid fa-truck"></i>
+
+                                            </button>
+                                        </form>
+                                        <form action="validate" class="ms-1" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $order['id']; ?>">
+                                            <button class="btn btn-sm btn-info" type="submit" value="Validate">
+                                                <i class="fa-solid fa-check"></i>
+
+
+                                            </button>
+
+                                        </form>
+                                    </div>
+                                </td>
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
+
         </div>
     </div>
 </div>

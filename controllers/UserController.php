@@ -3,22 +3,31 @@
 class UserController
 {
 
+    public function getAllUsers()
+    {
+        $users = User::getAll();
+        return $users;
+    }
+
     public function auth()
     {
         if (isset($_POST["submit"])) {
             $data["username"] = $_POST["username"];
             $role = User::getRoleByUsername($data["username"]);
+            $user_id = User::getIdByUsername($data["username"]);
+            $_SESSION["id"] = $user_id;
+
+            // die(var_dump($_SESSION["id"]));
 
             $user = User::login($data, $role);
             if ($user && $user->username === $_POST["username"] && password_verify($_POST["password"], $user->password)) {
                 $_SESSION["logged"] = true;
+                $_SESSION["fullname"] = $user->fullname;
                 if ($role === 'user') {
-                    $_SESSION["fullname"] = $user->fullname;
                     $_SESSION["role"] = 'user';
                 } elseif ($role === 'admin') {
-                    $_SESSION["admin"] = true;
-                    $_SESSION["fullname"] = $user->fullname;
-                    $_SESSION["role"] = 'user';
+                    $_SESSION["admin"] = 'admin';
+                    $_SESSION["role"] = 'admin';
                 }
                 Redirect::to("home");
             } else {
@@ -52,8 +61,12 @@ class UserController
             echo $result;
         }
     }
+
     public function logout()
     {
+        session_unset();
         session_destroy();
+        Redirect::to("welcome");
+       
     }
 }

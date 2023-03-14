@@ -3,6 +3,26 @@
 class User
 {
 
+
+    static public function getAll()
+    {
+        $stmt = DB::connect()->prepare('SELECT u.id, u.fullname, u.email, u.ville, u.ntele
+        FROM users AS u');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
+    public static function getIdByUsername($username)
+    {
+        $stmt = DB::connect()->prepare('SELECT id FROM users WHERE username = :username');
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['id'] ?? null;
+    }
+
+
     static public function getRoleByUsername($username)
     {
         try {

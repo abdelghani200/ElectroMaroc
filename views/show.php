@@ -20,7 +20,7 @@ $product = $data->getProduct();
             </div>
             <div class="card-body">
               <p class="card-text">
-                <?php echo $product->short_desc; ?>
+                <?php echo $product->product_description; ?>
               </p>
             </div>
             <div class="card-footer d-flex justify-content-between align-items-center">

@@ -66,12 +66,13 @@ class CategorieController
                 "cat_id" => $_POST["cat_id"],
                 "cat_title" => $_POST["cat_title"],
                 "description_cat" => $_POST["description_cat"],
-                "product_image" => $this->uploadPhoto($oldImage),
+                "image_categorie" => $this->uploadPhoto($oldImage),
             );
             $result = Category::editCategorie($data);
             if ($result === "ok") {
                 Session::set("success", "Categorie modifié");
                 Redirect::to("categories");
+                
             } else {
                 echo $result;
             }

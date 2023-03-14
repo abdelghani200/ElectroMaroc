@@ -49,7 +49,7 @@ class Category
         ');
         $stmt->bindParam(':cat_id', $data['cat_id']);
         $stmt->bindParam(':cat_title', $data['cat_title']);
-        $stmt->bindParam(':description_cat', $data['description__cat']);
+        $stmt->bindParam(':description_cat', $data['description_cat']);
         $stmt->bindParam(':image_categorie', $data['image_categorie']);
         if ($stmt->execute()) {
             return 'ok';
