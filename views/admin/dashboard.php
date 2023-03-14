@@ -27,13 +27,15 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6 mx-auto mt-5">
+            <div class="card p-5 bg-info">
+                <div class="card-body">
+                    <h3 class="card-text text-center">
+                        <a href="<?php echo BASE_URL ?>clients" style="text-decoration:none;color:white;font-weight:bold">Clients</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
-
-
-<!-- Vertically centered modal -->
-<div class="modal-dialog modal-dialog-centered">
-  ...
 </div>
 
